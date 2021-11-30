@@ -54,23 +54,23 @@ namespace PoliceStationNew.XAML.EmployeePage.Personnel
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string newFile = "testcheck.docx";
-            FileStream fs = new FileStream(newFile,FileMode.CreateNew);
+            //string newFile = "testcheck.docx";
+            //FileStream fs = new FileStream(newFile,FileMode.CreateNew);
             
                
-                XWPFDocument doc = new XWPFDocument();
-                var p0 = doc.CreateParagraph();
-                p0.Alignment = ParagraphAlignment.CENTER;
-                XWPFRun r0 = p0.CreateRun();
-                r0.FontFamily = "Standard";
-                r0.FontSize = 14;
-                r0.IsBold = true;
-                foreach (Models.Employee employee in Employees)
-                {
-                    r0.SetText(employee.email);
-                }
+            //    XWPFDocument doc = new XWPFDocument();
+            //    var p0 = doc.CreateParagraph();
+            //    p0.Alignment = ParagraphAlignment.CENTER;
+            //    XWPFRun r0 = p0.CreateRun();
+            //    r0.FontFamily = "Standard";
+            //    r0.FontSize = 14;
+            //    r0.IsBold = true;
+            //    foreach (Models.Employee employee in Employees)
+            //    {
+            //        r0.SetText(employee.email);
+            //    }
                
-                doc.Write(fs);
+            //    doc.Write(fs);
             
                 Frame.Navigate(typeof(AddEmp));
         }
