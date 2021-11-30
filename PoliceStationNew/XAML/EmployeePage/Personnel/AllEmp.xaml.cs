@@ -72,6 +72,7 @@ namespace PoliceStationNew.XAML.EmployeePage.Personnel
                
             //    doc.Write(fs);
             
+
                 Frame.Navigate(typeof(AddEmp));
         }
 
