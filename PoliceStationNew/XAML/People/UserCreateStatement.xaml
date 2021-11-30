@@ -1,0 +1,31 @@
+﻿<Page
+    x:Class="PoliceStationNew.XAML.People.UserCreateStatement"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PoliceStationNew.XAML.People"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.3*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <TextBox x:Name="Name" FontSize="35" PlaceholderText="Наименование" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <TextBox x:Name="Appealtext" FontSize="35" PlaceholderText="Опишите происшествие" />
+
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Button Content="Добавить" FontSize="35" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Button_Click"/>
+        </Grid>
+    </Grid>
+</Page>

@@ -1,0 +1,17 @@
+﻿<Page
+    x:Class="PoliceStationNew.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PoliceStationNew"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <TextBox x:Name="Email" HorizontalAlignment="Center" Margin="0,403,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="64" Width="340" FontSize="40" FontFamily="Times New Roman" CornerRadius="10" PlaceholderText="Email"/>
+        <PasswordBox x:Name="Password" HorizontalAlignment="Center" Margin="0,503,0,0" VerticalAlignment="Top" Height="64" Width="340" FontSize="40" FontFamily="Times New Roman" CornerRadius="10" PlaceholderText="Пароль" InputScope="Password"/>
+        <Button Content="Войти" Margin="0,609,0,0" VerticalAlignment="Top" Height="47" Width="208" HorizontalAlignment="Center" FontFamily="Times New Roman" FontSize="25" CornerRadius="15" Click="Button_Click"/>
+        <Button Content="Регистрация" Margin="0,689,0,0" VerticalAlignment="Top" Height="47" Width="208" HorizontalAlignment="Center" FontFamily="Times New Roman" FontSize="25" CornerRadius="15" Click="Button_Click_1" />
+    </Grid>
+</Page>

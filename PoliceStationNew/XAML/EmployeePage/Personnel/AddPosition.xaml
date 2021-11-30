@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="PoliceStationNew.XAML.EmployeePage.Personnel.AddPosition"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PoliceStationNew.XAML.EmployeePage.Personnel"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="PosName" PlaceholderText="Наименование" Grid.Row="2" FontSize="35" VerticalAlignment="Center" HorizontalAlignment="Center" Width="262"></TextBox>
+        <TextBox x:Name="Salary" PlaceholderText="Оклад" Grid.Row="3" FontSize="35" VerticalAlignment="Center" HorizontalAlignment="Center" Width="262"></TextBox>
+        <Button x:Name="Confirm" Content="Подтвердить" FontSize="35" Grid.Row="4" HorizontalAlignment="Center" Width="262" Click="Confirm_Click"/>
+    </Grid>
+</Page>
