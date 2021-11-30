@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -52,34 +53,37 @@ namespace PoliceStationNew.XAML.EmployeePage.Personnel
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            //string newFile = "testcheck.docx";
-            //FileStream fs = new FileStream(newFile,FileMode.CreateNew);
-            
-               
-            //    XWPFDocument doc = new XWPFDocument();
-            //    var p0 = doc.CreateParagraph();
-            //    p0.Alignment = ParagraphAlignment.CENTER;
-            //    XWPFRun r0 = p0.CreateRun();
-            //    r0.FontFamily = "Standard";
-            //    r0.FontSize = 14;
-            //    r0.IsBold = true;
-            //    foreach (Models.Employee employee in Employees)
-            //    {
-            //        r0.SetText(employee.email);
-            //    }
-               
-            //    doc.Write(fs);
-            
-
-                Frame.Navigate(typeof(AddEmp));
+            Frame.Navigate(typeof(AddEmp));
         }
 
         private void EmpGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Check.editEmp = (Models.Employee)EmpGrid.SelectedItem;
             Frame.Navigate(typeof(AddEmp));
+        }
+
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var fil1 = await KnownFolders.MusicLibrary.GetFolderAsync("Отчет по работникам");
+            await fil1.DeleteAsync();
+            var file = await KnownFolders.MusicLibrary.CreateFolderAsync("Отчет по работникам");
+            var fil = await file.CreateFileAsync("Emp.docx");
+            XWPFDocument doc = new XWPFDocument();
+            foreach (Models.Employee employee in Employees)
+            {
+
+                var p0 = doc.CreateParagraph();
+                p0.Alignment = ParagraphAlignment.CENTER;
+                XWPFRun r0 = p0.CreateRun();
+                r0.FontFamily = "Standard";
+                r0.FontSize = 14;
+                r0.IsBold = true;
+                r0.SetText(employee.email);
+            }
+
+            doc.Write(fil.OpenStreamForWriteAsync().Result);
         }
     }
 }
