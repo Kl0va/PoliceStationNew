@@ -1,4 +1,5 @@
 ﻿using Flurl.Http;
+using NPOI.XWPF.UserModel;
 using PoliceStationNew.Models;
 using PoliceStationNew.Moduls;
 using System;
@@ -10,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -85,6 +87,55 @@ namespace PoliceStationNew.XAML.People
                 var response = await "https://police-api-russia.herokuapp.com/delete_appeal".PostJsonAsync(ap).ReceiveString();
                 Frame.Navigate(typeof(UserStatements));
             }
+        }
+
+        private async void Report_Click(object sender, RoutedEventArgs e)
+        {
+            int count_checked = 0;
+            int count_added = 0;
+            int count_checking = 0;
+            var fil1 = await KnownFolders.MusicLibrary.GetFolderAsync("Отчет по заявлениям");
+            await fil1.DeleteAsync();
+            var file = await KnownFolders.MusicLibrary.CreateFolderAsync("Отчет по заявлениям");
+            var fil = await file.CreateFileAsync("Appeal.docx");
+            XWPFDocument doc = new XWPFDocument();
+            foreach(Appeal appeals1 in Appeal)
+            {
+                if (appeals1.status == "На рассмотрении")
+                {
+                    count_added += 1;
+                }
+                else if (appeals1.status == "Рассмотрено")
+                {
+                    count_checked += 1;
+                }
+                else if (appeals1.status == "Одобрено")
+                {
+                    count_checking += 1;
+                }
+            }
+                var p0 = doc.CreateParagraph();
+                var p1 = doc.CreateParagraph();
+                var p2 = doc.CreateParagraph();
+                p0.Alignment = ParagraphAlignment.CENTER;
+                p2.Alignment = ParagraphAlignment.CENTER;
+                p1.Alignment = ParagraphAlignment.CENTER;
+                XWPFRun r0 = p0.CreateRun();
+                XWPFRun r1 = p1.CreateRun();
+                XWPFRun r2 = p2.CreateRun();
+                r0.FontFamily = "Standard";
+                r1.FontFamily = "Standard";
+                r2.FontFamily = "Standard";
+                r0.FontSize = 14;
+                r1.FontSize = 14;
+                r2.FontSize = 14;
+                r0.IsBold = true;
+                r1.IsBold = true;
+                r2.IsBold = true;
+                r0.SetText($"Заявлений рассмотрено - {count_checked} \n");
+                r1.SetText($"Заявлений одобрено - {count_checking}  \n");
+                r2.SetText($"Заявлений ещё не одобрено - {count_added}");
+                doc.Write(fil.OpenStreamForWriteAsync().Result);
         }
     }
 }

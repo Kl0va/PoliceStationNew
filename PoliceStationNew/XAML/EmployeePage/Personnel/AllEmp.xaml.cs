@@ -64,26 +64,5 @@ namespace PoliceStationNew.XAML.EmployeePage.Personnel
             Frame.Navigate(typeof(AddEmp));
         }
 
-        private async void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            var fil1 = await KnownFolders.MusicLibrary.GetFolderAsync("Отчет по работникам");
-            await fil1.DeleteAsync();
-            var file = await KnownFolders.MusicLibrary.CreateFolderAsync("Отчет по работникам");
-            var fil = await file.CreateFileAsync("Emp.docx");
-            XWPFDocument doc = new XWPFDocument();
-            foreach (Models.Employee employee in Employees)
-            {
-
-                var p0 = doc.CreateParagraph();
-                p0.Alignment = ParagraphAlignment.CENTER;
-                XWPFRun r0 = p0.CreateRun();
-                r0.FontFamily = "Standard";
-                r0.FontSize = 14;
-                r0.IsBold = true;
-                r0.SetText(employee.email);
-            }
-
-            doc.Write(fil.OpenStreamForWriteAsync().Result);
-        }
     }
 }

@@ -14,7 +14,6 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Button Grid.Row="0" Content="Добавить сотрудника" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Right" CornerRadius="15" Click="Button_Click"></Button>
-        <Button Grid.Row="0" Content="Выгрузить отчет" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Right" CornerRadius="15" Margin="0,0,300,0" Click="Button_Click_1"></Button>
         <GridView x:Name="EmpGrid" Grid.Row="1" HorizontalAlignment="Stretch"  Margin="100,0,100,100" SelectionChanged="EmpGrid_SelectionChanged">
             <GridView.ItemTemplate>
                 <DataTemplate>
