@@ -16,7 +16,7 @@
             <RowDefinition Height="0.1*"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBox x:Name="AppealName" Grid.Row="0" PlaceholderText="Название обращения" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30"></TextBox>
-        <TextBox x:Name="AppealText" Grid.Row="1" PlaceholderText="Текст обращения" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" Height="521" Width="1920"></TextBox>
+        <TextBox x:Name="AppealText" Grid.Row="1" PlaceholderText="Текст обращения" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" Height="521" Width="1500" AcceptsReturn="True"></TextBox>
         <ComboBox x:Name="State" Grid.Row="2" PlaceholderText="Выберите статью" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center"></ComboBox>
         <Button x:Name="Confirm" Grid.Row="3" Content="Подтвердить" FontSize="30" CornerRadius="15" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Confirm_Click"></Button>
     </Grid>

@@ -10,7 +10,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition> 
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <TextBox Grid.Row="0" x:Name="Email" HorizontalAlignment="Center" Margin="0,0,0,100" Text="" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="64" Width="340" FontSize="40" FontFamily="Times New Roman" CornerRadius="10" PlaceholderText="Email"/>
