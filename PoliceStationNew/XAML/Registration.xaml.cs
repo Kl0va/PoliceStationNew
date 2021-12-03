@@ -36,39 +36,51 @@ namespace PoliceStationNew.XAML
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            String email = Email.Text;
-            Check.reg = true;
-            Task<List<Declarant>> getDeclarants = ApiWork.GetAllDeclarants();
-            await getDeclarants.ContinueWith(t =>
+            try
             {
-                foreach (Declarant declarant1 in getDeclarants.Result)
+                String email = Email.Text;
+                Check.reg = true;
+                Task<List<Declarant>> getDeclarants = ApiWork.GetAllDeclarants();
+                await getDeclarants.ContinueWith(t =>
                 {
-                    if (email == declarant1.email)
+                    foreach (Declarant declarant1 in getDeclarants.Result)
                     {
-                        Check.reg = false;
+                        if (email == declarant1.email)
+                        {
+                            Check.reg = false;
+                        }
                     }
+                });
+
+
+
+                if (Check.reg)
+                {
+                    var md5 = MD5.Create();
+                    var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(Password.Text));
+                    var declarant = new Declarant(Name.Text, Fam.Text, Middle.Text, Ser.Text, Num.Text, Number.Text, Email.Text, Convert.ToBase64String(hash));
+                    var response = await "https://police-api-russia.herokuapp.com/input_declarant".PostJsonAsync(declarant).ReceiveString();
+                    Frame.Navigate(typeof(MainPage));
                 }
-            });
-
-
-
-            if (Check.reg) 
-            {
-                var md5 = MD5.Create();
-                var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(Password.Text));
-                var declarant = new Declarant(Name.Text, Fam.Text, Middle.Text, Ser.Text, Num.Text, Number.Text, Email.Text,Convert.ToBase64String(hash));
-                var response = await "https://police-api-russia.herokuapp.com/input_declarant".PostJsonAsync(declarant).ReceiveString();
-                Frame.Navigate(typeof(MainPage));
+                else
+                {
+                    ContentDialog contentDialog = new ContentDialog
+                    {
+                        Title = "Ошибка",
+                        Content = "Пользователь с таким Email уже существует",
+                        CloseButtonText = "Ок"
+                    };
+                    await contentDialog.ShowAsync();
+                }
             }
-            else
+            catch
             {
                 ContentDialog contentDialog = new ContentDialog
                 {
                     Title = "Ошибка",
-                    Content = "Пользователь с таким Email уже существует",
+                    Content = "Проверьте введенные данные",
                     CloseButtonText = "Ок"
                 };
-                await contentDialog.ShowAsync();
             }
         }
     }
