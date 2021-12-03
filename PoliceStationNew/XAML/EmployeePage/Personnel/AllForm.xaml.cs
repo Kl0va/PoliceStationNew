@@ -1,4 +1,5 @@
-﻿using PoliceStationNew.Models;
+﻿using Flurl.Http;
+using PoliceStationNew.Models;
 using PoliceStationNew.Moduls;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,7 @@ namespace PoliceStationNew.XAML.EmployeePage.Personnel
     public sealed partial class AllForm : Page
     {
         private static List<Formation> formations = new List<Formation>();
+        private static List<Models.Employee> employees = new List<Models.Employee>();
         public AllForm()
         {
             this.InitializeComponent();
@@ -53,6 +55,50 @@ namespace PoliceStationNew.XAML.EmployeePage.Personnel
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(AddForm));
+        }
+
+        private async void FormGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            employees.Clear();
+            Models.Formation form = (Formation)FormGrid.SelectedItem;
+
+
+            Task<List<Models.Employee>> getEmployees = ApiWork.GetAllEmployees();
+            await getEmployees.ContinueWith(t =>
+            {
+                foreach (Models.Employee employee in getEmployees.Result)
+                {
+                    employees.Add(employee);
+                }
+            });
+            //FormGrid.ItemsSource = employees;
+            bool check = true;
+            foreach (Models.Employee employee1 in employees)
+            {
+                if (check)
+                {
+                    foreach (Formation formation in formations.ToList())
+                    {
+                        if (employee1.formation_id == formation.id)
+                        {
+                            ContentDialog contentDialog = new ContentDialog
+                            {
+                                Title = "Ошибка",
+                                Content = "У сотрудника есть данная должность",
+                                CloseButtonText = "Ок"
+                            };
+                            await contentDialog.ShowAsync();
+                            check = false;
+                            break;
+                        }
+                    }
+                }
+            }
+            if (check)
+            {
+                var response = await "https://police-api-russia.herokuapp.com/delete_formation".PostJsonAsync(form).ReceiveString();
+                Frame.Navigate(typeof(AllForm));
+            }
         }
     }
 }

@@ -14,7 +14,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Button Grid.Row="0" Content="Добавить образование" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Right" CornerRadius="15" Click="Button_Click"></Button>
-        <GridView x:Name="FormGrid" Grid.Row="1" HorizontalAlignment="Stretch"  Margin="100,0,100,100">
+        <GridView x:Name="FormGrid" Grid.Row="1" HorizontalAlignment="Stretch"  Margin="100,0,100,100" SelectionChanged="FormGrid_SelectionChanged">
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <Grid HorizontalAlignment="Stretch" Width="300" Height="100" >

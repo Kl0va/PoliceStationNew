@@ -43,7 +43,7 @@ namespace PoliceStationNew.XAML.EmployeePage.Personnel
             roles.Clear();
             formations.Clear();
 
-
+            
             if (Check.editEmp == null)
             {
                 Dis.Visibility = Visibility.Collapsed;
@@ -115,7 +115,6 @@ namespace PoliceStationNew.XAML.EmployeePage.Personnel
             {
                 if (Check.editEmp != null)
                 {
-                    
                     var md5 = MD5.Create();
                     var hash = md5.ComputeHash(Encoding.UTF8.GetBytes(Password.Text));
                     int pos_id = 0;

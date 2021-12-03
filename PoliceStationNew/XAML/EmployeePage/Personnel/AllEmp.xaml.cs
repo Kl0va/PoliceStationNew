@@ -37,6 +37,7 @@ namespace PoliceStationNew.XAML.EmployeePage.Personnel
 
         public async void Load()
         {
+            Check.editEmp = null;
             Employees.Clear();
             Task<List<Models.Employee>> getEmployees = ApiWork.GetAllEmployees();
             await getEmployees.ContinueWith(t =>
