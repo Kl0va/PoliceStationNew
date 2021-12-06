@@ -20,9 +20,12 @@
                     <Grid HorizontalAlignment="Stretch">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock Text="{Binding appeal_name}" Grid.Row="0" FontSize="32" />
-                        <TextBlock Text="{Binding status}" Grid.Row="1" FontSize="32" />
+                        <TextBlock Text="{Binding text}" Grid.Row="1" FontSize="32" />
+                        <TextBlock Text="{Binding status}" Grid.Row="2" FontSize="32" />
                     </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>

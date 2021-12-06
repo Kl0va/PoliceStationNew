@@ -22,13 +22,10 @@
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <TextBlock Text="{Binding Text}" Grid.Row="0" FontSize="32" />
-                        <TextBlock Text="{Binding Declarant.FirstName}" Grid.Row="1" FontSize="32" />
-                        <TextBlock Text="{Binding Employee.FirstName}" Grid.Row="2" FontSize="32" />
-                        <TextBlock Text="{Binding Article.Number}" Grid.Row="3" FontSize="32" />
+                        <TextBlock Text="{Binding appeal_name}" Grid.Row="0" FontSize="32" />
+                        <TextBlock Text="{Binding text}" Grid.Row="1" FontSize="32" />
+                        <TextBlock Text="{Binding status}" Grid.Row="2" FontSize="32" />
                     </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>

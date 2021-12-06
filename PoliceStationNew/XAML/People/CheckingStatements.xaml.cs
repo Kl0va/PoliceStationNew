@@ -46,11 +46,8 @@ namespace PoliceStationNew.XAML.People
                     }
                 }
             });
-            Thread.Sleep(100);
-            foreach (Appeal appeals in Appeal)
-            {
-                AppealGrid.Items.Add(appeals);
-            }
+            Thread.Sleep(520);
+            AppealGrid.ItemsSource = Appeal;
         }
     }
 }
