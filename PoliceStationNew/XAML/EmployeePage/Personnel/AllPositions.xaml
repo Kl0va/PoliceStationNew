@@ -1,19 +1,22 @@
 ﻿<Page
-    x:Class="PoliceStationNew.XAML.EmployeePage.Personnel.AllPositions"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:PoliceStationNew.XAML.EmployeePage.Personnel"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:syncfusion="using:Syncfusion.UI.Xaml.Charts"
+    x:Class="PoliceStationNew.XAML.EmployeePage.Personnel.AllPositions"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Content="Добавить должность" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Right" CornerRadius="15" Click="Button_Click"></Button>
+
+        <Button Grid.Row="0" Content="Добавить должность" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Right" CornerRadius="15" Click="Button_Click"/>
         <GridView x:Name="PosGrid" Grid.Row="1" HorizontalAlignment="Stretch"  Margin="100,0,100,100" SelectionChanged="PosGrid_SelectionChanged">
             <GridView.ItemTemplate>
                 <DataTemplate>
@@ -27,6 +30,7 @@
                     </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>
+            
         </GridView>
     </Grid>
 </Page>

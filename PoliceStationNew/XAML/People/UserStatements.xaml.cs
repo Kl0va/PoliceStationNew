@@ -137,5 +137,50 @@ namespace PoliceStationNew.XAML.People
                 r2.SetText($"Заявлений ещё не одобрено - {count_added}");
                 doc.Write(fil.OpenStreamForWriteAsync().Result);
         }
+
+        private async void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (Search.Text == "")
+            {
+                Appeal.Clear();
+                Task<List<Appeal>> getAppeals = ApiWork.GetAllAppeals();
+                await getAppeals.ContinueWith(t =>
+                {
+                    foreach (Appeal appeal in getAppeals.Result)
+                    {
+                        if (appeal.declarant_id == Check.ID)
+                        {
+                            Appeal.Add(appeal);
+                        }
+                    }
+                });
+                Thread.Sleep(100);
+                foreach (Appeal appeals in Appeal)
+                {
+                    StatementGrid.Items.Add(appeals);
+                }
+            }
+            else
+            {
+                Appeal.Clear();
+                string SearchText = Search.Text;
+                Task <List<Appeal>> appealTask = ApiWork.GetAllAppeals();
+                await appealTask.ContinueWith(task =>
+                {
+                    foreach(Appeal appeals in task.Result)
+                    {
+                        if(appeals.appeal_name == SearchText)
+                        {
+                            Appeal.Add(appeals);
+                        }
+                    }
+                });
+                foreach (Appeal appeals in Appeal)
+                {
+                    StatementGrid.Items.Clear();
+                    StatementGrid.Items.Add(appeals);
+                }
+            }
+        }
     }
 }
