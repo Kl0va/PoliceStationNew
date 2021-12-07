@@ -25,7 +25,7 @@
         </Grid>
 
         <Grid Grid.Row="2">
-            <Button Content="Добавить" FontSize="35" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Button_Click"/>
+            <Button x:Name="ConfirmAppeal" Content="Добавить" FontSize="35" VerticalAlignment="Center" HorizontalAlignment="Center" Click="Button_Click"/>
         </Grid>
     </Grid>
 </Page>

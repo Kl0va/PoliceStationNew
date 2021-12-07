@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <TextBox Grid.Row="0" x:Name="Email" HorizontalAlignment="Center" Margin="0,0,0,100" Text="" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="64" Width="340" FontSize="40" FontFamily="Times New Roman" CornerRadius="10" PlaceholderText="Email"/>
         <PasswordBox Grid.Row="0" x:Name="Password" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Bottom" Height="64" Width="340" FontSize="40" FontFamily="Times New Roman" CornerRadius="10" PlaceholderText="Пароль" InputScope="Password"/>
-        <Button Grid.Row="1" Content="Войти" Margin="0,50,0,0" VerticalAlignment="Top" Height="47" Width="208" HorizontalAlignment="Center" FontFamily="Times New Roman" FontSize="25" CornerRadius="15" Click="Button_Click"/>
+        <Button x:Name="Log_in" Grid.Row="1" Content="Войти" Margin="0,50,0,0" VerticalAlignment="Top" Height="47" Width="208" HorizontalAlignment="Center" FontFamily="Times New Roman" FontSize="25" CornerRadius="15" Click="Button_Click"/>
         <Button Grid.Row="1" Content="Регистрация" Margin="0,150,0,0" VerticalAlignment="Top" Height="47" Width="208" HorizontalAlignment="Center" FontFamily="Times New Roman" FontSize="25" CornerRadius="15" Click="Button_Click_1" />
     </Grid>
 </Page>

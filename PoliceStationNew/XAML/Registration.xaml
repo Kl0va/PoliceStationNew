@@ -17,6 +17,6 @@
         <TextBox x:Name="Number" HorizontalAlignment="Center" Margin="0,575,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="64" Width="340" FontSize="40" FontFamily="Times New Roman" CornerRadius="10" PlaceholderText="Телефон"></TextBox>
         <TextBox x:Name="Email" HorizontalAlignment="Center" Margin="0,678,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="64" Width="340" FontSize="40" FontFamily="Times New Roman" CornerRadius="10" PlaceholderText="Email"></TextBox>
         <TextBox x:Name="Password" HorizontalAlignment="Center" Margin="0,781,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="64" Width="340" FontSize="40" FontFamily="Times New Roman" CornerRadius="10" PlaceholderText="Пароль"></TextBox>
-        <Button Content="Подтвердить" Margin="0,913,0,0" VerticalAlignment="Top" Height="76" Width="340" HorizontalAlignment="Center" FontFamily="Times New Roman" FontSize="50" CornerRadius="20" Click="Button_Click" />
+        <Button x:Name="Register" Content="Подтвердить" Margin="0,913,0,0" VerticalAlignment="Top" Height="76" Width="340" HorizontalAlignment="Center" FontFamily="Times New Roman" FontSize="50" CornerRadius="20" Click="Button_Click" />
     </Grid>
 </Page>
