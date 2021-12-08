@@ -1,6 +1,7 @@
 ﻿using NPOI.XWPF.UserModel;
 using PoliceStationNew.Models;
 using PoliceStationNew.Moduls;
+using Syncfusion.UI.Xaml.Charts;
 using System;
 using System.Collections.Generic;
 using System.IO;

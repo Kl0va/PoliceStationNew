@@ -30,7 +30,8 @@
                     </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>
-            
+
         </GridView>
+        <syncfusion:SfChart x:Name="PosChart" HorizontalAlignment="Left" Margin="100,409,0,0" VerticalAlignment="Top" Height="504" Grid.Row="1" Width="1223"/>
     </Grid>
 </Page>

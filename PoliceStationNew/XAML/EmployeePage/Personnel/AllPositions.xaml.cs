@@ -1,5 +1,6 @@
 ﻿using PoliceStationNew.Models;
 using PoliceStationNew.Moduls;
+using Syncfusion.UI.Xaml.Charts;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -26,7 +27,7 @@ namespace PoliceStationNew.XAML.EmployeePage.Personnel
     /// </summary>
     public sealed partial class AllPositions : Page
     {
-        private static List<Position> positions = new List<Position>();
+        private static List<Models.Position> positions = new List<Models.Position>();
         public AllPositions()
         {
             this.InitializeComponent();
@@ -34,20 +35,25 @@ namespace PoliceStationNew.XAML.EmployeePage.Personnel
         }
         public async void Load()
         {
+            ColumnSeries series = new ColumnSeries();
             positions.Clear();
-            Task<List<Position>> getPosition = ApiWork.GetAllPositions();
+            Task<List<Models.Position>> getPosition = ApiWork.GetAllPositions();
             await getPosition.ContinueWith(t =>
             {
-                foreach (Position position in getPosition.Result)
+                foreach (Models.Position position in getPosition.Result)
                 {
                     positions.Add(position);
                 }
             });
             Thread.Sleep(100);
-            foreach (Position position1 in positions)
+            foreach (Models.Position position1 in positions)
             {
                 PosGrid.Items.Add(position1);
             }
+            series.ItemsSource = positions;
+            series.XBindingPath = "name";
+            series.YBindingPath = "salary";
+            PosChart.Series.Add(series);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -57,7 +63,7 @@ namespace PoliceStationNew.XAML.EmployeePage.Personnel
 
         private void PosGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Check.editPos = (Position)PosGrid.SelectedItem;
+            Check.editPos = (Models.Position)PosGrid.SelectedItem;
             Frame.Navigate(typeof(AddPosition));
         }
     }
