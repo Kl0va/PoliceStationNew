@@ -65,7 +65,7 @@ namespace PoliceStationNew.XAML.EmployeePage.Personnel
                         var response = await "https://police-api-russia.herokuapp.com/input_position".PostJsonAsync(pos).ReceiveString();
                     }
                     Frame.Navigate(typeof(AllPositions));
-                }
+                }                
             }
             catch
             {

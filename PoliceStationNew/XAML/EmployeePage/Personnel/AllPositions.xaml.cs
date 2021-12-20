@@ -35,6 +35,7 @@ namespace PoliceStationNew.XAML.EmployeePage.Personnel
         }
         public async void Load()
         {
+            Check.editPos = null;
             ColumnSeries series = new ColumnSeries();
             positions.Clear();
             Task<List<Models.Position>> getPosition = ApiWork.GetAllPositions();
